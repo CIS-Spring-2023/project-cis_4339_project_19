@@ -2,12 +2,16 @@
 import { DateTime } from 'luxon'
 import axios from 'axios'
 import AttendanceChart from './barChart.vue'
+import DoughnutChart from '@/components/doughnutChart.vue'
+
 const apiURL = import.meta.env.VITE_ROOT_API
 
 export default {
   components: {
+    DoughnutChart,
     AttendanceChart
   },
+
   data() {
     return {
       recentEvents: [],
@@ -110,6 +114,15 @@ export default {
               :label="labels"
               :chart-data="chartData"
             ></AttendanceChart>
+            <div class="mt-10" v-if="!loading && !error">
+              <h2 class="text-xl font-bold" align="center">Clients by Zip Code</h2>
+              <div class="mt-4">
+                <doughnut-chart
+                  v-if="!loading && !error"
+                  :data="[10, 20, 30, 40]"
+                ></doughnut-chart>
+              </div>
+            </div>
 
             <!-- Start of loading animation -->
             <div class="mt-40" v-if="loading">
