@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { Role } from '../_helpers/role'
+// import { Role } from '../_helpers/role'
 
 // make all paths and names lowercase for consistency
 const routes = [
@@ -15,7 +15,6 @@ const routes = [
     component: () => import('../components/homePage.vue')
   },
   {
-
     path: '/intakeform',
     name: 'intakeform',
     props: true,
@@ -73,7 +72,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   // ...
   // explicitly return false to cancel the navigation
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (localStorage.getItem('user') == null) {
       next({
         path: '/login',
@@ -82,23 +81,19 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
-  } else if (to.matched.some(record => record.meta.authorize)) {
+  } else if (to.matched.some((record) => record.meta.authorize)) {
     if (JSON.parse(localStorage.getItem('user')).role == Role.Editor) {
       next()
-    }
-    else {
+    } else {
       next({ name: 'dashboard' })
     }
-  }
-  else if (to.matched.some(record => record.meta.guest)) {
+  } else if (to.matched.some((record) => record.meta.guest)) {
     if (localStorage.getItem('user') == null) {
       next()
-    }
-    else {
+    } else {
       next({ name: 'dashboard' })
     }
-  }
-  else {
+  } else {
     next()
   }
   return false
