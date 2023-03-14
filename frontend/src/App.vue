@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios'
+import { Role } from './_helpers/role'
 const apiURL = import.meta.env.VITE_ROOT_API
 
 export default {
@@ -13,6 +14,24 @@ export default {
     axios.get(`${apiURL}/org`).then((res) => {
       this.orgName = res.data.name
     })
+  },
+  computed: {
+    loggedIn() {
+      return localStorage.getItem('user') != null
+    },
+    isEditorRole() {
+      if (localStorage.getItem('user') != null) {
+        return JSON.parse(localStorage.getItem('user')).role == Role.Editor
+      }
+      return false
+    }
+  },
+
+  methods: {
+    logout() {
+      localStorage.removeItem('user')
+      window.location.href = '/'
+    }
   }
 }
 </script>
@@ -25,6 +44,26 @@ export default {
         </section>
         <nav class="mt-10">
           <ul class="flex flex-col gap-4">
+            <li v-if="this.loggedIn">
+              <a href="#" class="nav-link" @click="logout">
+                <span
+                  style="position: relative; top: 6px"
+                  class="material-icons"
+                  >account_box</span
+                >
+                Logout
+              </a>
+            </li>
+            <li v-if="!this.loggedIn">
+              <router-link to="/login">
+                <span
+                  style="position: relative; top: 6px"
+                  class="material-icons"
+                  >account_box</span
+                >
+                Log In
+              </router-link>
+            </li>
             <li>
               <router-link to="/">
                 <span
@@ -82,7 +121,13 @@ export default {
                   class="material-icons"
                   >star</span
                 >
-                Create Services
+                =======
+                <span
+                  style="position: relative; top: 6px"
+                  class="material-icons"
+                  >search</span
+                >
+                >>>>>>> 9f138997d7cc0b472977e57ac23c8f5869c14333 Create Services
               </router-link>
             </li>
             <li>
