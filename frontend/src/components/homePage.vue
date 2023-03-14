@@ -115,7 +115,9 @@ export default {
               :chart-data="chartData"
             ></AttendanceChart>
             <div class="mt-10" v-if="!loading && !error">
-              <h2 class="text-xl font-bold" align="center">Clients by Zip Code</h2>
+              <h2 class="text-xl font-bold" align="center">
+                Clients by Zip Code
+              </h2>
               <div class="mt-4">
                 <doughnut-chart
                   v-if="!loading && !error"
