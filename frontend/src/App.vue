@@ -72,7 +72,7 @@ export default {
                   class="material-icons"
                   >search</span
                 >
-                Create Services
+                Find Events
               </router-link>
             </li>
             <li>
@@ -82,7 +82,7 @@ export default {
                   class="material-icons"
                   >search</span
                 >
-                Find Services
+                Create Services
               </router-link>
             </li>
             <li>
@@ -92,7 +92,7 @@ export default {
                   class="material-icons"
                   >search</span
                 >
-                Find Event
+                Find Services
               </router-link>
             </li>
           </ul>
