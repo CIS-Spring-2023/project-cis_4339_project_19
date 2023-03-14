@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios'
-import { Role } from './_helpers/role'
+// import { Role } from './_helpers/role'
 const apiURL = import.meta.env.VITE_ROOT_API
 
 export default {
@@ -121,13 +121,11 @@ export default {
                   class="material-icons"
                   >star</span
                 >
-                =======
                 <span
                   style="position: relative; top: 6px"
                   class="material-icons"
                   >search</span
-                >
-                >>>>>>> 9f138997d7cc0b472977e57ac23c8f5869c14333 Create Services
+                >Create Services
               </router-link>
             </li>
             <li>
