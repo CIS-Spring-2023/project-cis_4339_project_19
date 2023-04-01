@@ -152,6 +152,7 @@ export default {
               v-for="event in events"
               :key="event._id"
             >
+              <!--              this is where the data is extracted from the api by specific json data from the api-->
               <td class="p-2 text-left">{{ event.name }}</td>
               <td class="p-2 text-left">{{ formattedDate(event.date) }}</td>
               <td class="p-2 text-left">{{ event.address.line1 }}</td>

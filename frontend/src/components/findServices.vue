@@ -6,7 +6,9 @@ const apiURL = import.meta.env.VITE_ROOT_API
 export default {
   data() {
     return {
+      // i am not sure if services is supposed to be cap or not
       Services: [],
+      events: [],
       // Parameter for search to occur
       searchBy: '',
       name: '',
@@ -31,7 +33,7 @@ export default {
       if (this.searchBy === 'Service Name') {
         endpoint = `services/search/?name=${this.name}&searchBy=name`
       } else if (this.searchBy === 'Service Date') {
-        endpoint = `services/search/?eerviceDate=${this.ServiceDate}&searchBy=date`
+        endpoint = `services/search/?serviceDate=${this.ServiceDate}&searchBy=date`
       }
       axios.get(`${apiURL}/${endpoint}`).then((res) => {
         this.services = res.data
@@ -39,7 +41,7 @@ export default {
     },
     // abstracted method to get Services
     getServices() {
-      axios.get(`${apiURL}/Service`).then((res) => {
+      axios.get(`${apiURL}/events`).then((res) => {
         this.Service = res.data
       })
       window.scrollTo(0, 0)
@@ -52,8 +54,8 @@ export default {
 
       this.getServices()
     },
-    editService(serviceID) {
-      this.$router.push({ name: 'servicedetails', params: { id: serviceID } })
+    editService(eventID) {
+      this.$router.push({ name: 'eventdetails', params: { id: eventID } })
     }
   }
 }
@@ -146,13 +148,14 @@ export default {
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-300">
+            <!--          altered this area to pull up the information correctly. services is apart of events-->
             <tr
-              @click="editService(service._id)"
-              v-for="service in service"
-              :key="service._id"
+              @click="editService(event._id)"
+              v-for="event in events"
+              :key="event._id"
             >
-              <td class="p-2 text-left">{{ service.name }}</td>
-              <td class="p-2 text-left">{{ formattedDate(service.date) }}</td>
+              <td class="p-2 text-left">{{ event.services }}</td>
+              <td class="p-2 text-left">{{ formattedDate(event.date) }}</td>
             </tr>
           </tbody>
         </table>
