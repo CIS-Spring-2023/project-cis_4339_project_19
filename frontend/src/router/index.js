@@ -15,7 +15,7 @@ const routes = [
     component: () => import("../components/userLogin.vue"),
   },
   {
-    // Afras Wadiwala - Added Route for Manage Services
+    // Added Route for Manage Services
     path: "/services",
     name: "services",
     component: () => import("../components/Services.vue"),
@@ -35,7 +35,7 @@ const routes = [
     component: () => import("../components/editService.vue"),
   },
   {
-    // Helmut Brenner - Added Route for dashboard
+    // Added Route for dashboard
     path: "/dashboard",
     name: "dashboard",
     props: true,
