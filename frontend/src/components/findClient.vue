@@ -61,49 +61,41 @@ export default {
         <h2 class="text-2xl font-bold">Search Client By</h2>
         <!-- Displays Client Name search field -->
         <div class="flex flex-col">
-          <select class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="searchBy">
+          <select
+            class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            v-model="searchBy">
             <option value="Client Name">Client Name</option>
             <option value="Client Number">Client Number</option>
           </select>
         </div>
         <div class="flex flex-col" v-if="searchBy === 'Client Name'">
           <label class="block">
-            <input
-              type="text"
+            <input type="text"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              v-model="firstName"
-              v-on:keyup.enter="handleSubmitForm"
-              placeholder="Enter first name"
-            />
+              v-model="firstName" v-on:keyup.enter="handleSubmitForm" placeholder="Enter first name" />
           </label>
         </div>
         <div class="flex flex-col" v-if="searchBy === 'Client Name'">
           <label class="block">
-            <input
-              type="text"
+            <input type="text"
               class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              v-model="lastName"
-              v-on:keyup.enter="handleSubmitForm"
-              placeholder="Enter last name"
-            />
+              v-model="lastName" v-on:keyup.enter="handleSubmitForm" placeholder="Enter last name" />
           </label>
         </div>
         <!-- Displays Client Number search field -->
         <div class="flex flex-col" v-if="searchBy === 'Client Number'">
           <input
             class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            type="text"
-            v-model="phoneNumber"
-            v-on:keyup.enter="handleSubmitForm"
-            placeholder="Enter Client Phone Number"
-          />
+            type="text" v-model="phoneNumber" v-on:keyup.enter="handleSubmitForm"
+            placeholder="Enter Client Phone Number" />
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
         <div></div>
         <div></div>
         <div class="mt-5 grid-cols-2">
-          <button class="mr-10 border border-red-700 bg-white text-red-700 rounded" @click="clearSearch" type="submit">Clear Search</button>
+          <button class="mr-10 border border-red-700 bg-white text-red-700 rounded" @click="clearSearch"
+            type="submit">Clear Search</button>
           <button class="bg-red-700 text-white rounded" @click="handleSubmitForm" type="submit">Search Client</button>
         </div>
       </div>

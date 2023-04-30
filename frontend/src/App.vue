@@ -1,39 +1,22 @@
 <script>
-import axios from 'axios'
-import { Role } from './_helpers/role'
-const apiURL = import.meta.env.VITE_ROOT_API
+import axios from 'axios';
+const apiURL = 'http://localhost:3002';
+import { role } from './role.js';
 
 export default {
   name: 'App',
   data() {
     return {
-      orgName: 'Dataplatform'
-    }
+      orgName: 'Dataplatform',
+      role
+    };
   },
   created() {
     axios.get(`${apiURL}/org`).then((res) => {
-      this.orgName = res.data.name
-    })
-  },
-  computed: {
-    loggedIn() {
-      return localStorage.getItem('user') != null
-    },
-    isEditorRole() {
-      if (localStorage.getItem('user') != null) {
-        return JSON.parse(localStorage.getItem('user')).role == Role.Editor
-      }
-      return false
-    }
-  },
-
-  methods: {
-    logout() {
-      localStorage.removeItem('user')
-      window.location.href = '/'
-    }
+      this.orgName = res.data.name;
+    });
   }
-}
+};
 </script>
 <template>
   <main class="flex flex-row">
@@ -44,58 +27,53 @@ export default {
         </section>
         <nav class="mt-10">
           <ul class="flex flex-col gap-4">
-            <li v-if="this.loggedIn">
-              <a href="#" class="nav-link" @click="logout">
-                <span style="position: relative; top: 6px" class="material-icons">account_box</span>
-                Logout
-              </a>
+            <li v-if="this.role.userRole === null">
+              <router-link to="/userLogin">
+                <span style="position: relative; top: 6px" class="material-icons">key</span>
+                User Login
+              </router-link>
             </li>
-            <li v-if="!this.loggedIn">
-              <router-link to="/login">
-                <span style="position: relative; top: 6px" class="material-icons">account_box</span>
-                Log In
+            <li v-else>
+              <router-link to="/userLogin">
+                <span style="position: relative; top: 6px" class="material-icons">key</span>
+                Log Out
               </router-link>
             </li>
             <li>
-              <router-link to="/">
+              <router-link to="/dashboard">
                 <span style="position: relative; top: 6px" class="material-icons">dashboard</span>
                 Dashboard
               </router-link>
             </li>
-            <li v-if="this.isEditorRole">
+            <li v-if="this.role.userRole === 'editor'">
               <router-link to="/intakeform">
                 <span style="position: relative; top: 6px" class="material-icons">people</span>
                 Client Intake Form
               </router-link>
             </li>
-            <li v-if="this.isEditorRole">
+            <li v-if="this.role.userRole === 'editor'">
               <router-link to="/eventform">
                 <span style="position: relative; top: 6px" class="material-icons">event</span>
                 Create Event
               </router-link>
             </li>
-            <li v-if="this.isEditorRole">
+            <li v-if="this.role.userRole === 'editor' || this.role.userRole === 'viewer'">
+              <!-- Helmut Brenner - This is the link to the manage services page -->
+              <router-link to="/services">
+                <span style="position: relative; top: 6px" class="material-icons">app_registration</span>
+                Services
+              </router-link>
+            </li>
+            <li v-if="this.role.userRole === 'viewer' || this.role.userRole === 'editor'">
               <router-link to="/findclient">
                 <span style="position: relative; top: 6px" class="material-icons">search</span>
                 Find Client
               </router-link>
             </li>
-            <li v-if="this.isEditorRole">
+            <li v-if="this.role.userRole === 'viewer' || this.role.userRole === 'editor'">
               <router-link to="/findevents">
                 <span style="position: relative; top: 6px" class="material-icons">search</span>
-                Find Events
-              </router-link>
-            </li>
-            <li v-if="this.isEditorRole">
-              <router-link to="/createServices">
-                <span style="position: relative; top: 6px" class="material-icons">star</span>
-                <span style="position: relative; top: 6px" class="material-icons">search</span>Create Services
-              </router-link>
-            </li>
-            <li v-if="this.isEditorRole">
-              <router-link to="/findServices">
-                <span style="position: relative; top: 6px" class="material-icons">search</span>
-                Find Services
+                Find Event
               </router-link>
             </li>
           </ul>
