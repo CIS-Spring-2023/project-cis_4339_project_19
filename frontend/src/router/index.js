@@ -1,101 +1,82 @@
-import { createRouter, createWebHistory } from 'vue-router'
-// import { Role } from '../_helpers/role'
+import { createRouter, createWebHistory } from "vue-router";
 
 // make all paths and names lowercase for consistency
 const routes = [
   {
-    path: '/',
-    name: 'dashboard',
+    // Changed to default to the login screen
+    path: "/",
+    name: "login",
+    component: () => import("../components/userLogin.vue"),
+  },
+  {
+    // Alternative path to the login screen
+    path: "/userlogin",
+    name: "userlogin",
+    component: () => import("../components/userLogin.vue"),
+  },
+  {
+    // Afras Wadiwala - Added Route for Manage Services
+    path: "/services",
+    name: "services",
+    component: () => import("../components/Services.vue"),
+  },
+  {
+    // Ability to add
+    path: "/addService",
+    name: "addService",
+    component: () => import("../components/addService.vue"),
+  },
+  {
+    // Ability to edit
+    path: "/editService/:id",
+    name: "editService",
     props: true,
-    component: () => import('../components/homePage.vue')
+    props: (route) => ({ id: route.params.id }),
+    component: () => import("../components/editService.vue"),
   },
   {
-    path: '/',
+    // Helmut Brenner - Added Route for dashboard
+    path: "/dashboard",
+    name: "dashboard",
     props: true,
-    component: () => import('../components/homePage.vue')
+    component: () => import("../components/homePage.vue"),
   },
   {
-    path: '/intakeform',
-    name: 'intakeform',
+    path: "/intakeform",
+    name: "intakeform",
     props: true,
-    component: () => import('../components/intakeForm.vue')
+    component: () => import("../components/intakeForm.vue"),
   },
   {
-    path: '/findclient',
-    name: 'findclient',
-    component: () => import('../components/findClient.vue')
+    path: "/findclient",
+    name: "findclient",
+    component: () => import("../components/findClient.vue"),
   },
   {
-    path: '/updateclient/:id',
-    name: 'updateclient',
+    path: "/updateclient/:id",
+    name: "updateclient",
     props: true,
-    component: () => import('../components/updateClient.vue')
+    component: () => import("../components/updateClient.vue"),
   },
   {
-    path: '/eventform',
-    name: 'eventform',
-    component: () => import('../components/eventForm.vue')
+    path: "/eventform",
+    name: "eventform",
+    component: () => import("../components/eventForm.vue"),
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('../components/login.vue'),
-    meta: { guest: true }
+    path: "/findevents",
+    name: "findevents",
+    component: () => import("../components/findEvents.vue"),
   },
   {
-    path: '/findevents',
-    name: 'findevents',
-    component: () => import('../components/findEvents.vue')
-  },
-  {
-    path: '/findServices',
-    name: 'findServices',
-    component: () => import('../components/findServices.vue')
-  },
-  {
-    path: '/CreateServices',
-    name: 'createServices',
-    component: () => import('../components/createServices.vue')
-  },
-  {
-    path: '/eventdetails/:id',
-    name: 'eventdetails',
+    path: "/eventdetails/:id",
+    name: "eventdetails",
     props: true,
-    component: () => import('../components/eventDetails.vue')
-  }
-]
+    component: () => import("../components/eventDetails.vue"),
+  },
+];
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
-
-router.beforeEach((to, from, next) => {
-  // ...
-  // explicitly return false to cancel the navigation
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (localStorage.getItem('user') == null) {
-      next({
-        path: '/login',
-        params: { nextUrl: to.fullPath }
-      })
-    } else {
-      next()
-    }
-  } else if (to.matched.some((record) => record.meta.authorize)) {
-    if (JSON.parse(localStorage.getItem('user')).role == Role.Editor) {
-      next()
-    } else {
-      next({ name: 'dashboard' })
-    }
-  } else if (to.matched.some((record) => record.meta.guest)) {
-    if (localStorage.getItem('user') == null) {
-      next()
-    } else {
-      next({ name: 'dashboard' })
-    }
-  } else {
-    next()
-  }
-  return false
-})
-export default router
+  routes,
+});
+export default router;

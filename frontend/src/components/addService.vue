@@ -23,7 +23,7 @@ export default {
     window.scrollTo(0, 0);
   },
   methods: {
-    // This is used to add a service to the DB.
+    // This method will be used to add a service to the DB.
     addServices() {
       let newObj = {
         name: this.name,

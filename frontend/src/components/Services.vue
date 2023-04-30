@@ -45,7 +45,7 @@ export default {
 <template>
   <main>
     <h1 class="font-bold text-4xl text-red-700 tracking-widest text-center my-10">Services</h1>
-    <!-- Check which user is logged in and display button or not -->
+    <!-- Verify which user is logged in and if the button is displayed-->
     <div v-if="this.role.userRole === 'editor'">
       <button class="py-1 mx-10 bg-red-500 text-white rounded" @click="addService">Add new service</button>
     </div>
@@ -55,7 +55,7 @@ export default {
           <h3 class="text-2xl">
             {{ service.name }}
           </h3>
-          <!-- Check which user is logged in and display button or not -->
+          <!-- Verify which user is logged in and if the button is displayed-->
           <div v-if="this.role.userRole === 'editor'">
             <button class="py-1 mr-2 border border-red-500 bg-white text-red-500 rounded" @click="deleteService(service._id)">Delete Service</button>
             <button class="py-1 bg-red-500 text-white rounded" @click="editService(service._id)">Edit Service</button>

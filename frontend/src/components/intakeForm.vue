@@ -1,42 +1,42 @@
 <script>
-import useVuelidate from '@vuelidate/core'
-import { required, email, alpha, numeric } from '@vuelidate/validators'
-import axios from 'axios'
-const apiURL = import.meta.env.VITE_ROOT_API
+import useVuelidate from "@vuelidate/core";
+import { required, email, alpha, numeric } from "@vuelidate/validators";
+import axios from "axios";
+const apiURL = "http://localhost:3002";
 
 export default {
   setup() {
-    return { v$: useVuelidate({ $autoDirty: true }) }
+    return { v$: useVuelidate({ $autoDirty: true }) };
   },
   data() {
     return {
-      org: '',
+      org: "",
       client: {
-        firstName: '',
-        middleName: '',
-        lastName: '',
-        email: '',
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        email: "",
         phoneNumber: {
-          primary: '',
-          alternate: ''
+          primary: "",
+          alternate: "",
         },
         address: {
-          line1: '',
-          line2: '',
-          city: '',
-          county: '',
-          zip: ''
-        }
-      }
-    }
+          line1: "",
+          line2: "",
+          city: "",
+          county: "",
+          zip: "",
+        },
+      },
+    };
   },
   created() {
     axios.get(`${apiURL}/org`).then((res) => {
-      this.org = res.data._id
-    })
+      this.org = res.data._id;
+    });
   },
   mounted() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   },
   methods: {
     // if valid:
@@ -48,39 +48,37 @@ export default {
     registerClient() {
       this.v$.$validate().then((valid) => {
         if (valid) {
-          axios
-            .get(`${apiURL}/clients/lookup/${this.client.phoneNumber.primary}`)
-            .then((res) => {
-              if (res.data) {
-                if (res.data.orgs.includes(this.org)) {
-                  alert('Client phone number has already been registered.')
-                  this.$router.push({ name: 'findclient' })
-                } else {
-                  axios
-                    .put(`${apiURL}/clients/register/${res.data._id}`)
-                    .then(() => {
-                      alert('Client registered')
-                      this.$router.push({ name: 'findclient' })
-                    })
-                    .catch((error) => {
-                      console.log(error)
-                    })
-                }
+          axios.get(`${apiURL}/clients/lookup/${this.client.phoneNumber.primary}`).then((res) => {
+            if (res.data) {
+              if (res.data.orgs.includes(this.org)) {
+                alert("Client phone number has already been registered.");
+                this.$router.push({ name: "findclient" });
               } else {
                 axios
-                  .post(`${apiURL}/clients`, this.client)
+                  .put(`${apiURL}/clients/register/${res.data._id}`)
                   .then(() => {
-                    alert('Client added')
-                    this.$router.push({ name: 'findclient' })
+                    alert("Client registered");
+                    this.$router.push({ name: "findclient" });
                   })
                   .catch((error) => {
-                    console.log(error)
-                  })
+                    console.log(error);
+                  });
               }
-            })
+            } else {
+              axios
+                .post(`${apiURL}/clients`, this.client)
+                .then(() => {
+                  alert("Client added");
+                  this.$router.push({ name: "findclient" });
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }
+          });
         }
-      })
-    }
+      });
+    },
   },
   // sets validations for the various data properties
   validations() {
@@ -90,49 +88,33 @@ export default {
         lastName: { required, alpha },
         email: { email },
         address: {
-          city: { required }
+          city: { required },
         },
         phoneNumber: {
-          primary: { required, numeric }
-        }
-      }
-    }
-  }
-}
+          primary: { required, numeric },
+        },
+      },
+    };
+  },
+};
 </script>
 <template>
   <main>
-    <h1
-      class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10"
-    >
-      Client Intake Form
-    </h1>
+    <h1 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Client Intake Form</h1>
     <div class="px-10 py-20">
       <!-- @submit.prevent stops the submit event from reloading the page-->
       <form @submit.prevent="registerClient">
         <!-- grid container -->
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10"
-        >
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
           <h2 class="text-2xl font-bold">Personal Details</h2>
           <!-- form field -->
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">First Name</span>
               <span style="color: #ff0000">*</span>
-              <input
-                type="text"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="client.firstName"
-              />
+              <input type="text" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="client.firstName" />
               <span class="text-black" v-if="v$.client.firstName.$error">
-                <p
-                  class="text-red-700"
-                  v-for="error of v$.client.firstName.$errors"
-                  :key="error.$uid"
-                >
-                  {{ error.$message }}!
-                </p>
+                <p class="text-red-700" v-for="error of v$.client.firstName.$errors" :key="error.$uid">{{ error.$message }}!</p>
               </span>
             </label>
           </div>
@@ -162,13 +144,7 @@ export default {
                 v-model="client.lastName"
               />
               <span class="text-black" v-if="v$.client.lastName.$error">
-                <p
-                  class="text-red-700"
-                  v-for="error of v$.client.lastName.$errors"
-                  :key="error.$uid"
-                >
-                  {{ error.$message }}!
-                </p>
+                <p class="text-red-700" v-for="error of v$.client.lastName.$errors" :key="error.$uid">{{ error.$message }}!</p>
               </span>
             </label>
           </div>
@@ -185,13 +161,7 @@ export default {
                 v-model="client.email"
               />
               <span class="text-black" v-if="v$.client.email.$error">
-                <p
-                  class="text-red-700"
-                  v-for="error of v$.client.email.$errors"
-                  :key="error.$uid"
-                >
-                  {{ error.$message }}!
-                </p>
+                <p class="text-red-700" v-for="error of v$.client.email.$errors" :key="error.$uid">{{ error.$message }}!</p>
               </span>
             </label>
           </div>
@@ -206,17 +176,8 @@ export default {
                 pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                 v-model="client.phoneNumber.primary"
               />
-              <span
-                class="text-black"
-                v-if="v$.client.phoneNumber.primary.$error"
-              >
-                <p
-                  class="text-red-700"
-                  v-for="error of v$.client.phoneNumber.primary.$errors"
-                  :key="error.$uid"
-                >
-                  {{ error.$message }}!
-                </p>
+              <span class="text-black" v-if="v$.client.phoneNumber.primary.$error">
+                <p class="text-red-700" v-for="error of v$.client.phoneNumber.primary.$errors" :key="error.$uid">{{ error.$message }}!</p>
               </span>
             </label>
           </div>
@@ -235,30 +196,20 @@ export default {
         </div>
 
         <!-- grid container -->
-        <div
-          class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10"
-        >
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
           <h2 class="text-2xl font-bold">Address Details</h2>
           <!-- form field -->
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">Address Line 1</span>
-              <input
-                type="text"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="client.address.line1"
-              />
+              <input type="text" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="client.address.line1" />
             </label>
           </div>
           <!-- form field -->
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">Address Line 2</span>
-              <input
-                type="text"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="client.address.line2"
-              />
+              <input type="text" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="client.address.line2" />
             </label>
           </div>
           <!-- form field -->
@@ -266,19 +217,9 @@ export default {
             <label class="block">
               <span class="text-gray-700">City</span>
               <span style="color: #ff0000">*</span>
-              <input
-                type="text"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="client.address.city"
-              />
+              <input type="text" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="client.address.city" />
               <span class="text-black" v-if="v$.client.address.city.$error">
-                <p
-                  class="text-red-700"
-                  v-for="error of v$.client.address.$errors"
-                  :key="error.$uid"
-                >
-                  {{ error.$message }}!
-                </p>
+                <p class="text-red-700" v-for="error of v$.client.address.$errors" :key="error.$uid">{{ error.$message }}!</p>
               </span>
             </label>
           </div>
@@ -287,30 +228,20 @@ export default {
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">County</span>
-              <input
-                type="text"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="client.address.county"
-              />
+              <input type="text" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="client.address.county" />
             </label>
           </div>
           <!-- form field -->
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">Zip Code</span>
-              <input
-                type="text"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="client.address.zip"
-              />
+              <input type="text" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="client.address.zip" />
             </label>
           </div>
           <div></div>
           <!-- submit button -->
           <div class="flex justify-between mt-10 mr-20">
-            <button class="bg-red-700 text-white rounded" type="submit">
-              Add Client
-            </button>
+            <button class="bg-red-700 text-white rounded" type="submit">Add Client</button>
           </div>
         </div>
       </form>
