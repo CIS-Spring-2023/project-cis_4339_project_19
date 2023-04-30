@@ -1,53 +1,59 @@
-const express = require('express')
-const mongoose = require('mongoose') //require mongoose library functionality
-const morgan = require('morgan') // better debugging
+const express = require("express");
+const mongoose = require("mongoose"); //require mongoose library functionaility
+const morgan = require("morgan"); // better debugging
 
-const cors = require('cors')
+const cors = require("cors");
 // allow using a .env file
-require('dotenv').config() //require the dotenv
+require("dotenv").config(); //require the dotenv
 
 // creates a new instance of express application
-const app = express()
-
+const app = express();
+// Add my MongoDB Atlas connection string here
+const connect_str = "mongodb+srv://reckertombstone12:reckertombstone12_pass@cluster0.tpwozdu.mongodb.net/test";
+// reckertombstone12
+// reckertombstone12_pass
 // add cors header to the server
 app.use(
   cors({
-    origin: '*'
+    origin: "*",
   })
-)
+);
 
 // sets up mongoose for the mongoDB connection
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(connect_str)
   .then(() => {
-    console.log('Database connection Success!')
+    console.log("Database connection Success!");
   })
   .catch((err) => {
-    console.error('Mongo Connection Error', err)
-  })
+    console.error("Mongo Connection Error", err);
+  });
 
 // declare port number for the api
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3002;
 
 // setup and access request body
-app.use(express.json())
-app.use(morgan('dev'))
+app.use(express.json());
+app.use(morgan("dev"));
 
 // setup middle ware for routes
-app.use('/clients', require('./routes/clients'))
-app.use('/events', require('./routes/events'))
-app.use('/org', require('./routes/org'))
+app.use("/clients", require("./routes/clients"));
+app.use("/events", require("./routes/events"));
+app.use("/org", require("./routes/org"));
+app.use("/auth", require("./routes/auth"));
+app.use("/services", require("./routes/services"));
+app.use("/user", require("./routes/user"));
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`)
-})
+  console.log(`Server listening on port ${PORT}`);
+});
 
 // error handler
 app.use(function (err, req, res, next) {
   // logs error and error code to console
-  console.error(err.message, req)
+  console.error(err.message, req);
   if (!err.statusCode) {
-    err.statusCode = 500
+    err.statusCode = 500;
   }
-  res.status(err.statusCode).send(err.message)
-})
+  res.status(err.statusCode).send(err.message);
+});
