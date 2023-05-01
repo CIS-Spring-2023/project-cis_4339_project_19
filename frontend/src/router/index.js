@@ -53,10 +53,10 @@ const routes = [
     component: () => import("../components/findClient.vue"),
   },
   {
-    path: "/updateclient/:id",
-    name: "updateclient",
+    path: "/updateEvent/:id",
+    name: "updateEvent",
     props: true,
-    component: () => import("../components/updateClient.vue"),
+    component: () => import("../components/updateEvent.vue"),
   },
   {
     path: "/eventform",

@@ -4,7 +4,7 @@ import { required, email, alpha, numeric } from "@vuelidate/validators";
 import axios from "axios";
 const apiURL = "http://localhost:3002";
 
-// This component allows the user to edit a service. The APIs currently don't work unless you have the correct MongoDB backend to connect to. It also uses vuex to store state.
+// This component allows the user to edit a service. it also uses vuex to store state.
 export default {
   props: {
     oops: {

@@ -28,7 +28,7 @@ router.get("/", (req, res, next) => {
   });
 });
 
-// Register org
+// Regiater org
 router.post("/register", async (req, res, next) => {
   try {
     const { name } = req.body;

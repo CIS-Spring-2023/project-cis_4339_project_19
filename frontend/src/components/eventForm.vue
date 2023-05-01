@@ -95,9 +95,7 @@ export default {
             <label class="block">
               <span class="text-gray-700">Event Name</span>
               <span style="color: #ff0000">*</span>
-              <input type="text"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="event.name" />
+              <input type="text" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="event.name" />
               <span class="text-black" v-if="v$.event.name.$error">
                 <p class="text-red-700" v-for="error of v$.event.name.$errors" :key="error.$uid">{{ error.$message }}!</p>
               </span>
@@ -109,9 +107,7 @@ export default {
             <label class="block">
               <span class="text-gray-700">Date</span>
               <span style="color: #ff0000">*</span>
-              <input
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                v-model="event.date" type="date" />
+              <input class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" v-model="event.date" type="date" />
               <span class="text-black" v-if="v$.event.date.$error">
                 <p class="text-red-700" v-for="error of v$.event.date.$errors" :key="error.$uid">{{ error.$message }}!</p>
               </span>
@@ -124,9 +120,11 @@ export default {
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">Description</span>
-              <textarea v-model="event.description"
+              <textarea
+                v-model="event.description"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                rows="2"></textarea>
+                rows="2"
+              ></textarea>
             </label>
           </div>
 
@@ -139,8 +137,12 @@ export default {
 
             <div v-for="item in event.services" :key="item._id">
               <label class="inline-flex items-center">
-                <input @click="toggleSelection(item.name)" type="checkbox" :value="item.name"
-                  class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" />
+                <input
+                  @click="toggleSelection(item.name)"
+                  type="checkbox"
+                  :value="item.name"
+                  class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50"
+                />
                 <span class="ml-2">{{ item.name }}</span>
               </label>
             </div>
@@ -154,27 +156,36 @@ export default {
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">Address Line 1</span>
-              <input type="text"
+              <input
+                type="text"
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                placeholder v-model="event.address.line1" />
+                placeholder
+                v-model="event.address.line1"
+              />
             </label>
           </div>
           <!-- form field -->
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">Address Line 2</span>
-              <input type="text"
+              <input
+                type="text"
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                placeholder v-model="event.address.line2" />
+                placeholder
+                v-model="event.address.line2"
+              />
             </label>
           </div>
           <!-- form field -->
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">City</span>
-              <input type="text"
+              <input
+                type="text"
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                placeholder v-model="event.address.city" />
+                placeholder
+                v-model="event.address.city"
+              />
             </label>
           </div>
           <div></div>
@@ -182,18 +193,24 @@ export default {
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">County</span>
-              <input type="text"
+              <input
+                type="text"
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                placeholder v-model="event.address.county" />
+                placeholder
+                v-model="event.address.county"
+              />
             </label>
           </div>
           <!-- form field -->
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">Zip Code</span>
-              <input type="text"
+              <input
+                type="text"
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                placeholder v-model="event.address.zip" />
+                placeholder
+                v-model="event.address.zip"
+              />
             </label>
           </div>
         </div>

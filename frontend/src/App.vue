@@ -58,7 +58,7 @@ export default {
               </router-link>
             </li>
             <li v-if="this.role.userRole === 'editor' || this.role.userRole === 'viewer'">
-              <!-- Helmut Brenner - This is the link to the manage services page -->
+              <!-- This is the link to the manage services page -->
               <router-link to="/services">
                 <span style="position: relative; top: 6px" class="material-icons">app_registration</span>
                 Services
@@ -81,8 +81,7 @@ export default {
       </header>
     </div>
     <div class="grow w-4/5">
-      <section class="justify-end items-center h-24 flex"
-        style="background: linear-gradient(250deg, #c8102e 70%, #efecec 50.6%)">
+      <section class="justify-end items-center h-24 flex" style="background: linear-gradient(250deg, #c8102e 70%, #efecec 50.6%)">
         <h1 class="mr-20 text-3xl text-white">{{ this.orgName }}</h1>
       </section>
       <div>

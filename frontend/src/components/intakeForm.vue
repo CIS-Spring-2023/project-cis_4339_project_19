@@ -40,11 +40,11 @@ export default {
   },
   methods: {
     // if valid:
-    //  if client with phonenumber exists in db:
-    //    if client already registered with org:
-    //      do nothing
-    //    else add org to client org array
-    //  else create client document
+    // if client with phonenumber exists in db:
+    // if client already registered with org:
+    // do nothing
+    // else add org to client org array
+    // else create client document
     registerClient() {
       this.v$.$validate().then((valid) => {
         if (valid) {

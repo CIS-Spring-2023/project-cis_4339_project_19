@@ -19,7 +19,7 @@ Setup a .env file with the following variables: MONGO_URL, PORT and ORG
 
 ### Compiles and hot-reloads for development
 
-    npm run start
+    npm start
 
 ## Postman Documentation
 
