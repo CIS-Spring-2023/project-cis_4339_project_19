@@ -61,7 +61,7 @@ router.get("/search", (req, res, next) => {
   });
 });
 
-// GET lookup by phone, verify org membership on frontend
+// GET lookup by phone
 router.get("/lookup/:phoneNumber", (req, res, next) => {
   clients.findOne(
     {
