@@ -21,17 +21,17 @@ VITE_ROOT_API is the URL for the backend API, either on localhost or in the clou
 
 ### Compiles and hot-reloads for development
 
-    npm run dev
+    npm run start
 
 ### Login Information
 
 Currently there are two users available for testing purposes:
 
-    username: viewer
-    password: password
+    username: viewer12@gmail.com
+    password: dev123
 
-    username: editor
-    password: password
+    username: editor12@gmail.com
+    password: dev123
 
 These two roles are used to restrict access to certain pages. Upon first logging in, the role is null so you see the login and dashboard. Upon logging
 in with one of the above credentials, the role is set and you can navigate to the other pages.
