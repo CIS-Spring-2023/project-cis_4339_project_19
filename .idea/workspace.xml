@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="56403a7f-c03a-4095-b85c-d21c33c1873c" name="Changes" comment="added a star" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2Kt48kZJxLkEADoMv7BtPinTkZS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Node.js.app.js">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/project-cis_4339_project_19/frontend/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/backend/app.js" working-dir="$PROJECT_DIR$/backend">
+      <method v="2" />
+    </configuration>
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/frontend/src/main.js" working-dir="$PROJECT_DIR$/frontend/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.app.js" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="Node.js.main.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56403a7f-c03a-4095-b85c-d21c33c1873c" name="Changes" comment="" />
+      <created>1674780389431</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674780389431</updated>
+      <workItem from="1674780393634" duration="1581000" />
+      <workItem from="1677461924376" duration="94000" />
+      <workItem from="1677463165482" duration="888000" />
+      <workItem from="1677632552442" duration="369000" />
+      <workItem from="1677633236764" duration="5037000" />
+      <workItem from="1677700387268" duration="8174000" />
+      <workItem from="1677800946477" duration="253000" />
+      <workItem from="1678128320591" duration="514000" />
+      <workItem from="1678213967087" duration="11447000" />
+      <workItem from="1678228087330" duration="245000" />
+      <workItem from="1678229244417" duration="468000" />
+      <workItem from="1678230394695" duration="480000" />
+      <workItem from="1678231778989" duration="1040000" />
+      <workItem from="1678762952394" duration="119000" />
+      <workItem from="1678763087540" duration="4000" />
+      <workItem from="1678763264307" duration="5000" />
+      <workItem from="1678763295674" duration="603000" />
+      <workItem from="1678764000043" duration="8000" />
+      <workItem from="1678764379953" duration="307000" />
+      <workItem from="1678764708097" duration="1061000" />
+      <workItem from="1678765887164" duration="88000" />
+      <workItem from="1678766300289" duration="1450000" />
+      <workItem from="1678769403536" duration="73000" />
+      <workItem from="1680284264617" duration="4151000" />
+      <workItem from="1680295461067" duration="205000" />
+      <workItem from="1680316710011" duration="467000" />
+      <workItem from="1680506354378" duration="590000" />
+      <workItem from="1680642397552" duration="70000" />
+    </task>
+    <task id="LOCAL-00001" summary="added the dataplatform api for demo still working through it.">
+      <created>1677711688599</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677711688599</updated>
+    </task>
+    <task id="LOCAL-00002" summary="I added the doughnut chart with hardcoded data for clients by zipcode">
+      <created>1678227562588</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678227562588</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added a star">
+      <created>1678765841352</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678765841352</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="added the dataplatform api for demo still working through it." />
+    <MESSAGE value="I added the doughnut chart with hardcoded data for clients by zipcode" />
+    <MESSAGE value="added a star" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a star" />
+  </component>
+</project>
