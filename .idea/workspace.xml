@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56403a7f-c03a-4095-b85c-d21c33c1873c" name="Changes" comment="added a star">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="56403a7f-c03a-4095-b85c-d21c33c1873c" name="Changes" comment="added a star" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,6 +109,7 @@
       <workItem from="1694025881142" duration="497000" />
       <workItem from="1694026743370" duration="240000" />
       <workItem from="1694027061649" duration="591000" />
+      <workItem from="1695068436084" duration="55000" />
     </task>
     <task id="LOCAL-00001" summary="added the dataplatform api for demo still working through it.">
       <created>1677711688599</created>
